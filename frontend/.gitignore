@@ -42,3 +42,4 @@ testem.log
 Thumbs.db
 
 .idea/diff-generator.xml
+/backend/target/
