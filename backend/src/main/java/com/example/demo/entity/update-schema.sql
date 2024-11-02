@@ -5,3 +5,7 @@ CREATE TABLE item
     completed     BIT(1) NOT NULL,
     CONSTRAINT pk_item PRIMARY KEY (id)
 );
+ALTER TABLE item
+    ADD count BIGINT NULL;
+ALTER TABLE item
+    DROP COLUMN completed;

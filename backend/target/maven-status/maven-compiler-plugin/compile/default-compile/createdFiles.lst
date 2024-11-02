@@ -1,0 +1,6 @@
+com/example/demo/BackendApplication.class
+com/example/demo/ItemService.class
+com/example/demo/CorsConfig.class
+com/example/demo/ItemController.class
+com/example/demo/entity/Item.class
+com/example/demo/ItemRepository.class

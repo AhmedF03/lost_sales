@@ -34,12 +34,35 @@ public class ItemController {
         return ResponseEntity.ok().body(savedItem);
     }
 
+    @PutMapping("/{id}/increment")
+    public ResponseEntity<Item> incrementCount(@PathVariable Long id) {
+        return itemRepository.findById(id)
+            .map(item -> {
+                item.setCount(item.getCount() + 1);
+                Item updatedItem = itemRepository.save(item);
+                return ResponseEntity.ok(updatedItem);
+            })
+            .orElseThrow(() -> new RuntimeException("Item Not Found"));
+    }
+
+    @PutMapping("/{id}/decrement")
+    public ResponseEntity<Item> decrementCount(@PathVariable Long id) {
+        return itemRepository.findById(id)
+            .map(item -> {
+                item.setCount(item.getCount() - 1);
+                Item updatedItem = itemRepository.save(item);
+                return ResponseEntity.ok(updatedItem);
+            })
+            .orElseThrow(() -> new RuntimeException("Item Not Found"));
+    }
+
+
     @PutMapping("/{id}")
     public ResponseEntity<Item> updateItem(@PathVariable Long id, @RequestBody Item updatedItem) {
         return itemRepository.findById(id)
                 .map(item -> {
                     item.setDescription(updatedItem.getDescription());
-                    item.setCompleted(updatedItem.isCompleted());
+                    item.setCount(updatedItem.getCount());
                     Item savedItem = itemRepository.save(item);
                     return ResponseEntity.ok().body(savedItem);
                 })

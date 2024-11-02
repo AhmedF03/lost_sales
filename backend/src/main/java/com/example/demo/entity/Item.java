@@ -1,9 +1,7 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 @Entity
 public class Item {
@@ -11,23 +9,28 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
-    private boolean completed;
+
+    @Column(nullable = false)
+    private Long count;
+
+
+
+    public Item(Long id, Long count, boolean completed, String description) {
+        this.id = id;
+        this.count = count;
+        this.description = description;
+    }
+
 
     public Item() {}
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", completed=" + completed +
-                '}';
+    public Long getCount() {
+        return count;
     }
 
-    public Item(Long id, String description, boolean completed) {
-        this.id = id;
-        this.description = description;
-        this.completed = completed;
+
+    public void setCount(Long count) {
+        this.count = count < 0 ? 0 : count;
     }
 
     public Long getId() {
@@ -46,11 +49,12 @@ public class Item {
         this.description = description;
     }
 
-    public boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", count=" + count +
+                '}';
     }
 }
