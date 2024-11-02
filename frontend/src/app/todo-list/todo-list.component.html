@@ -1,0 +1,26 @@
+<div class="todo-list-container">
+  <h2>Todo List</h2>
+
+  <!-- Loading indicator -->
+  <div *ngIf="loading" class="loading">
+    Loading...
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+  </div>
+
+  <!-- Todo list -->
+  <ul *ngIf="!loading && !error && items.length > 0">
+    <li *ngFor="let item of items">
+      {{ item.description }}
+      <span *ngIf="item.completed">(Completed)</span>
+    </li>
+  </ul>
+
+  <!-- Empty state -->
+  <div *ngIf="!loading && !error && items.length === 0" class="empty-state">
+    No items found
+  </div>
+</div>
