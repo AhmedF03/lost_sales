@@ -1,36 +1,205 @@
+/* Container styles */
 .todo-list-container {
-  padding: 20px;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-.loading {
+h2 {
   text-align: center;
-  padding: 20px;
-  color: #666;
+  color: #333;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
-.error-message {
-  color: red;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #fff3f3;
-  border: 1px solid #ffcdd2;
-  border-radius: 4px;
+/* Form styles */
+form {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
 }
 
+form div {
+  display: grid;
+  gap: 0.5rem;
+}
+
+label {
+  font-weight: 500;
+  color: #4a5568;
+}
+
+input {
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+}
+
+/* Button styles */
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #4299e1;
+  color: white;
+}
+
+button:hover {
+  background: #3182ce;
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  background: #cbd5e0;
+  cursor: not-allowed;
+}
+
+button[type="submit"] {
+  justify-self: start;
+  padding: 0.75rem 1.5rem;
+}
+
+/* List styles */
 ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
 }
 
 li {
-  padding: 10px;
-  margin: 5px 0;
-  background-color: #f5f5f5;
-  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  gap: 0.75rem;
+  transition: transform 0.2s;
 }
 
+li:hover {
+  transform: translateX(4px);
+}
+
+li span {
+  margin-left: auto;
+  background: #e2e8f0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+/* Button variations */
+li button {
+  padding: 0.25rem 0.75rem;
+}
+
+li button:nth-of-type(1) {
+  background: #48bb78;
+}
+
+li button:nth-of-type(1):hover {
+  background: #38a169;
+}
+
+li button:nth-of-type(2) {
+  background: #ed8936;
+}
+
+li button:nth-of-type(2):hover {
+  background: #dd6b20;
+}
+
+li button:nth-of-type(3) {
+  background: #f56565;
+}
+
+li button:nth-of-type(3):hover {
+  background: #e53e3e;
+}
+
+/* Existing item styles */
+.existing-item  {
+  background: #ebf8ff;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #bee3f8;
+}
+
+.existing-item  p {
+  color: #2b6cb0;
+  margin: 0 0 0.5rem 0;
+}
+
+.existing-item  strong {
+  font-weight: 600;
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  color: #4a5568;
+  padding: 2rem;
+}
+
+/* Error message */
+.error-message {
+  background: #fff5f5;
+  color: #c53030;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #fed7d7;
+}
+
+/* Empty state */
 .empty-state {
   text-align: center;
-  color: #666;
-  padding: 20px;
+  color: #718096;
+  padding: 2rem;
+  background: #f7fafc;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .todo-list-container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  li {
+    flex-wrap: wrap;
+  }
+
+  li span {
+    margin: 0;
+    order: -1;
+  }
+
+  li button {
+    flex: 1;
+  }
 }

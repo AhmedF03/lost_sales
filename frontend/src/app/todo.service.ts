@@ -15,8 +15,15 @@ export class TodoService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  // Optionally, you can add more methods to manage items
-  // Create a new to-do item
+  incrementCount(id: number): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}/increment`, {});
+  }
+
+  decrementCout(id: number): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}/decrement`, {});
+  }
+
+
   addItem(item: any): Observable<any> {  // You can replace 'any' with your item model if defined
     return this.http.post<any>(this.apiUrl, item);
   }
@@ -26,7 +33,7 @@ export class TodoService {
     return this.http.put<any>(`${this.apiUrl}/${item.id}`, item);  // Assuming 'item' has an 'id' property
   }
 
-  // Delete a to-do item by ID
+
   deleteItem(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
